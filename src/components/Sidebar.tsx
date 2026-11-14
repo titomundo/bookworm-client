@@ -5,11 +5,18 @@ import {
   BuildingOfficeIcon,
   BriefcaseIcon,
   UserIcon,
+  UsersIcon,
 } from "@heroicons/react/16/solid";
+
+import { useAuth } from "../utils/AuthContext";
+import { jwtDecode } from "jwt-decode";
 
 export function Sidebar() {
   const active = "bg-emerald-700/20 hover:bg-emerald-700/30 text-emerald-800";
   const base = " py-0.5 px-1.5 flex items-center rounded-sm";
+  const { isAuthenticated } = useAuth();
+  const token = isAuthenticated ? localStorage.getItem("token") : null;
+  const role = token ? jwtDecode(token).role : null;
 
   function getClass(isActive: boolean) {
     return isActive ? active + base : base;
@@ -58,6 +65,18 @@ export function Sidebar() {
               <span>Profile</span>
             </NavLink>
           </li>
+
+          {role === "Admin" && (
+            <li>
+              <NavLink
+                to="/users"
+                className={({ isActive }) => getClass(isActive)}
+              >
+                <UsersIcon className="size-6 pr-2" />
+                <span>Users</span>
+              </NavLink>
+            </li>
+          )}
         </ul>
         <Logout />
       </div>

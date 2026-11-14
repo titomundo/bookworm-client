@@ -40,7 +40,7 @@ const App = () => {
               <Route path="" element={<CreateBusinesses />}></Route>
             </Route>
             <Route path="/businesses/edit" element={<ProtectedRoute />}>
-              <Route path="" element={<EditBusiness/>}></Route>
+              <Route path="" element={<EditBusiness />}></Route>
             </Route>
 
             <Route path="/locations" element={<ProtectedRoute />}>
