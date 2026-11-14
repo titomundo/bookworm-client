@@ -46,37 +46,39 @@ export function Users() {
     fetchData();
   }, [token]);
 
-  console.log(users);
-
   return (
     <>
       <TitleBar title="Users" />
-      <div className="px-3">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
-          {users.map((e) => (
-            <div
-              className="text-xs bg-white shadow px-4 py-4 rounded-md text-left flex flex-col gap-2"
-              key={e.id}
-            >
-              <div className="text-gray-600">
-                <ul>
-                  <li>
-                    <span className="font-semibold">Name: </span>
-                    {e.first_name + " " + e.last_name}
-                  </li>
-                  <li>
-                    <span className="font-semibold">E-mail: </span>
-                    {e.email}
-                  </li>
-                  <li>
-                    <span className="font-semibold">Role: </span>
-                    {e.role}
-                  </li>
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="px-4 my-4">
+        <table className="w-full text-left text-xs">
+          <thead>
+            <tr className="border-b border-gray-300 text-gray-500">
+              <th></th>
+              <th className="w-30">First Name</th>
+              <th className="w-40">Last Name</th>
+              <th className="w-50">E-mail</th>
+              <th>Role</th>
+              <th className="">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, index) => (
+              <tr key={index}>
+                <td className="py-0.5 px-1 text-center font-semibold text-gray-500">
+                  {index + 1}
+                </td>
+                <td className="py-0.5">{user.first_name}</td>
+                <td className="py-0.5">{user.last_name}</td>
+                <td className="py-0.5">{user.email}</td>
+                <td className="py-0.5">{user.role}</td>
+                <td className="py-0.5 space-x-1.5">
+                  <span>Edit</span>
+                  <span>Delete</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
