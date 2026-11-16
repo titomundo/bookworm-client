@@ -4,6 +4,12 @@ type AuthContextType = {
   isAuthenticated: boolean;
   login: (email: string, password: string) => void;
   logout: () => void;
+  register: (
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+  ) => void;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -41,10 +47,42 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsAuthenticated(false);
   };
 
+  const register = async (
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+  ) => {
+    await fetch("http://127.0.0.1:5000/api/v1/auth/register", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          console.log(data.error);
+          return;
+        }
+
+        localStorage.setItem("token", data.access_token);
+        setIsAuthenticated(true);
+      });
+  };
+
   const value: AuthContextType = {
     isAuthenticated,
     login,
     logout,
+    register,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
