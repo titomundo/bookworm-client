@@ -56,15 +56,6 @@ export function Sidebar() {
               <span>Reservations</span>
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/profile"
-              className={({ isActive }) => getClass(isActive)}
-            >
-              <UserIcon className="size-6 pr-2" />
-              <span>Profile</span>
-            </NavLink>
-          </li>
 
           {role === "Admin" && (
             <li>
@@ -77,6 +68,16 @@ export function Sidebar() {
               </NavLink>
             </li>
           )}
+
+          <li>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) => getClass(isActive)}
+            >
+              <UserIcon className="size-6 pr-2" />
+              <span>Profile</span>
+            </NavLink>
+          </li>
         </ul>
         <Logout />
       </div>
