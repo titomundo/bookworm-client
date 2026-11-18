@@ -5,7 +5,7 @@ import Profile from "./pages/Profile";
 import { Layout } from "./components/Layout";
 
 import "./App.css";
-import { ProtectedRoute } from "./utils/ProtectedRoute";
+import ProtectedRoute from "./utils/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import Businesses from "./pages/Businesses";
 import Reservations from "./pages/Reservations";
