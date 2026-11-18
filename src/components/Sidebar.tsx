@@ -12,7 +12,8 @@ import { useAuth } from "../utils/AuthContext";
 import { jwtDecode } from "jwt-decode";
 
 export function Sidebar() {
-  const active = "bg-emerald-700/20 hover:bg-emerald-700/30 text-emerald-800";
+  const active =
+    "bg-emerald-700/20 hover:bg-emerald-700/30 text-emerald-800 font-semibold";
   const base = " py-0.5 px-1.5 flex items-center rounded-sm";
   const { isAuthenticated } = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
@@ -23,12 +24,12 @@ export function Sidebar() {
   }
 
   return (
-    <div className="px-4 w-48 text-left bg-gray-100 h-full border-r border-r-gray-200 text-gray-600">
+    <div className="px-4 w-48 text-left bg-gray-100 h-full border-r border-r-gray-200 text-gray-500">
       <div className="flex flex-col h-full py-3">
         <h1 className="text-center px-2 font-semibold text-lg text-gray-700">
           Bookworm
         </h1>
-        <ul className="flex-1 flex flex-col gap-1 my-6 text-sm w-full font-medium">
+        <ul className="flex-1 flex flex-col gap-1 my-6 text-xs w-full font-medium">
           <li>
             <NavLink
               to="/businesses"

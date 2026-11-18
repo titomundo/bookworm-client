@@ -17,6 +17,8 @@ import { CreateReservation } from "./pages/CreateReservation";
 import { EditReservation } from "./pages/EditReservation";
 import { EditLocation } from "./pages/EditLocation";
 import { EditBusiness } from "./pages/EditBusiness";
+import Employees from "./pages/Employees.tsx";
+import CreateEmployee from "./pages/CreateEmployee.tsx";
 
 const App = () => {
   return (
@@ -48,6 +50,7 @@ const App = () => {
             <Route path="/locations" element={<ProtectedRoute />}>
               <Route path="" element={<Locations />}></Route>
             </Route>
+
             <Route path="/locations/new" element={<ProtectedRoute />}>
               <Route path="" element={<CreateLocation />}></Route>
             </Route>
@@ -67,6 +70,13 @@ const App = () => {
 
             <Route path="/users" element={<ProtectedRoute />}>
               <Route path="" element={<Users />}></Route>
+            </Route>
+
+            <Route path="/employees" element={<ProtectedRoute />}>
+              <Route path="" element={<Employees />}></Route>
+            </Route>
+            <Route path="/employees/new" element={<ProtectedRoute />}>
+              <Route path="" element={<CreateEmployee />}></Route>
             </Route>
           </Route>
         </Routes>
