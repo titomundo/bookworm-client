@@ -71,6 +71,7 @@ export function Reservations() {
           console.log(error);
         });
     }
+
     fetchData();
   }, [token]);
 

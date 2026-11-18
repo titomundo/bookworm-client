@@ -56,8 +56,6 @@ export function CreateReservation() {
       location_id: formData.get("location_id"),
     };
 
-    console.log(data);
-
     await fetch("http://127.0.0.1:5000/api/v1/reservations/", {
       method: "POST",
       credentials: "include",

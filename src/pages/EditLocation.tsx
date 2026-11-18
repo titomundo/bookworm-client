@@ -27,7 +27,7 @@ export function EditLocation() {
       capacity,
       business_id: location.business_id,
     };
-    console.log(data);
+
     await fetch(`http://127.0.0.1:5000/api/v1/locations/${location.id}`, {
       method: "PUT",
       credentials: "include",
