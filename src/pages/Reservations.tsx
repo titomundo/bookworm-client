@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import type { Reservation } from "../lib/definitions";
 import { _Link } from "../components/_Link";
 
-export function Reservations() {
+export default function Reservations() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const [reservations, setReservations] = useState<Array<Reservation>>([]);

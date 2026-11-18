@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { _Link } from "../components/_Link";
 import type { Location } from "../lib/definitions";
 
-export function Locations() {
+export default function Locations() {
   const [locations, setLocations] = useState<Array<Location>>([]);
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
@@ -65,14 +65,25 @@ export function Locations() {
                   </li>
                 </ul>
               </div>
-              <div className="my-1">
-                <NavLink
-                  to="/locations/edit"
-                  state={e}
-                  className="bg-teal-600/20 hover:bg-teal-600/30 text-teal-700 font-medium rounded-md py-1 text-center w-full block"
-                >
-                  Edit
-                </NavLink>
+              <div className="space-y-1">
+                <div className="">
+                  <NavLink
+                    to="/locations/edit"
+                    state={e}
+                    className="bg-teal-600/20 hover:bg-teal-600/30 text-teal-600 hover:text-teal-800 font-medium rounded-md py-1 text-center w-full block"
+                  >
+                    Edit
+                  </NavLink>
+                </div>
+                <div className="">
+                  <NavLink
+                    to="/employees"
+                    state={e}
+                    className="bg-lime-600/20 hover:bg-lime-600/30 text-lime-600 hover:text-lime-800 font-medium rounded-md py-1 text-center w-full block"
+                  >
+                    Employees
+                  </NavLink>
+                </div>
               </div>
             </div>
           ))}

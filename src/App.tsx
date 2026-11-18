@@ -1,22 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register.tsx";
-import { Profile } from "./pages/Profile";
+import Profile from "./pages/Profile";
 import { Layout } from "./components/Layout";
 
 import "./App.css";
 import { ProtectedRoute } from "./utils/ProtectedRoute";
-import { Dashboard } from "./pages/Dashboard";
-import { Businesses } from "./pages/Businesses";
-import { Reservations } from "./pages/Reservations";
-import { Locations } from "./pages/Locations";
-import { Users } from "./pages/Users";
-import { CreateBusinesses } from "./pages/CreateBusiness";
-import { CreateLocation } from "./pages/CreateLocation";
-import { CreateReservation } from "./pages/CreateReservation";
-import { EditReservation } from "./pages/EditReservation";
-import { EditLocation } from "./pages/EditLocation";
-import { EditBusiness } from "./pages/EditBusiness";
+import Dashboard from "./pages/Dashboard";
+import Businesses from "./pages/Businesses";
+import Reservations from "./pages/Reservations";
+import Locations from "./pages/Locations";
+import Users from "./pages/Users";
+import CreateBusinesses from "./pages/CreateBusiness";
+import CreateLocation from "./pages/CreateLocation";
+import CreateReservation from "./pages/CreateReservation";
+import EditReservation from "./pages/EditReservation";
+import EditLocation from "./pages/EditLocation";
+import EditBusiness from "./pages/EditBusiness";
 import Employees from "./pages/Employees.tsx";
 import CreateEmployee from "./pages/CreateEmployee.tsx";
 

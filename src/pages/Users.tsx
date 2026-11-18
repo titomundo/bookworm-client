@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { TitleBar } from "../components/TitleBar";
 import type { User } from "../lib/definitions";
 import { jwtDecode } from "jwt-decode";
 
-export function Users() {
+export default function Users() {
   const [users, setUsers] = useState<Array<User>>([]);
   const { isAuthenticated } = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;

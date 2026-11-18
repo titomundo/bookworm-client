@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { _Link } from "../components/_Link";
 import type { Business } from "../lib/definitions";
 
-export function Businesses() {
+export default function Businesses() {
   const [businesses, setBusinesses] = useState<Array<Business>>([]);
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;

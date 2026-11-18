@@ -6,7 +6,7 @@ import { getFormErrors } from "../lib/getFormErrors";
 import { _Link } from "../components/_Link";
 import type { FormError } from "../lib/definitions";
 
-export function EditBusiness() {
+export default function EditBusiness() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const business = useLocation().state;

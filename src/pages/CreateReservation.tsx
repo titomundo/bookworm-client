@@ -7,7 +7,7 @@ import type { Location } from "../lib/definitions";
 import type { FormError } from "../lib/definitions";
 import { _Link } from "../components/_Link";
 
-export function CreateReservation() {
+export default function CreateReservation() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const [locations, setLocations] = useState<Array<Location>>([]);

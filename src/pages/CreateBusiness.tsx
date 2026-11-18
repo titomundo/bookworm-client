@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { _Link } from "../components/_Link";
 
-export function CreateBusinesses() {
+export default function CreateBusinesses() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const [errors, setErrors] = useState<Array<FormError>>([]);

@@ -6,7 +6,7 @@ import { getFormErrors } from "../lib/getFormErrors";
 import type { FormError } from "../lib/definitions";
 import { _Link } from "../components/_Link";
 
-export function EditReservation() {
+export default function EditReservation() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const reservation = useLocation().state;

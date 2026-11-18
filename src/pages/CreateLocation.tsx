@@ -7,7 +7,7 @@ import { _Link } from "../components/_Link";
 import type { Business } from "../lib/definitions";
 import type { FormError } from "../lib/definitions";
 
-export function CreateLocation() {
+export default function CreateLocation() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const [businesses, setBusinesses] = useState<Array<Business>>([]);

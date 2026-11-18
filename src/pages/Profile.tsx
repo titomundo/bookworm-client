@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { TitleBar } from "../components/TitleBar";
 import type { User } from "../lib/definitions";
 
-export function Profile() {
+export default function Profile() {
   const [user, setUser] = useState<User>();
   const { isAuthenticated } = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
