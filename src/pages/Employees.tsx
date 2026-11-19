@@ -86,7 +86,6 @@ export default function Employees() {
                   <NavLink to="/employees/edit" state={user}>
                     Edit
                   </NavLink>
-                  <span>Delete</span>
                 </td>
               </tr>
             ))}
