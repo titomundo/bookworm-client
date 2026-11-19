@@ -45,7 +45,7 @@ export default function EditUser() {
           return;
         }
 
-        navigate("/locations");
+        navigate(-1);
       })
       .catch((error) => {
         console.log(error.message);
@@ -57,7 +57,7 @@ export default function EditUser() {
       <TitleBar title="Edit User" />
       <div className="px-4 text-left">
         <div className="my-4 text-xs">
-          <_Link text="Return to list" to="/businesses/" />
+          <_Link text="Return to list" to="/locations/" />
         </div>
         <ul>
           {errors.map((e) => (
@@ -69,7 +69,7 @@ export default function EditUser() {
             className="w-lg my-4 text-left flex flex-col gap-2 text-xs bg-white shadow p-4 rounded-md"
             onSubmit={handleSubmit}
           >
-            <h3 className="text-base font-semibold">Edit Business</h3>
+            <h3 className="text-base font-semibold">Edit User</h3>
             <div className="flex flex-col">
               <label className="font-medium ml-0.5" htmlFor="lastName">
                 First Name:

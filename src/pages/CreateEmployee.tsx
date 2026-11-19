@@ -69,7 +69,7 @@ export default function CreateEmployee() {
           return;
         }
 
-        navigate("/employees");
+        navigate("/locations");
       })
       .catch((error) => {
         console.log(error.message);
