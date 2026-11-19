@@ -78,7 +78,7 @@ export default function Reservations() {
   return (
     <>
       <TitleBar title="Reservations" />
-      <div className="px-3">
+      <div className="px-4">
         <div className="text-left my-4 text-xs font-medium">
           <_Link text="Create new reservation" to="/reservations/new" />
         </div>

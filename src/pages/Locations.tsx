@@ -39,7 +39,7 @@ export default function Locations() {
   return (
     <>
       <TitleBar title="Locations" />
-      <div className="px-3">
+      <div className="px-4">
         <div className="text-left my-4 text-xs font-medium">
           <_Link text="Create new location" to="/locations/new" />
         </div>
