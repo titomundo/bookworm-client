@@ -16,7 +16,7 @@ export default function Users() {
     const role = decoded.role;
 
     if (role !== "Admin") {
-      navigate("/dashboard");
+      navigate("/reservations");
     }
   }
 
