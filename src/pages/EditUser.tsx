@@ -20,6 +20,7 @@ export default function EditUser() {
     e.preventDefault();
 
     const data = {
+      id: user.id,
       first_name: firstName,
       last_name: lastName,
     };
