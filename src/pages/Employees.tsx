@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { TitleBar } from "../components/TitleBar";
 import type { User } from "../lib/definitions";
@@ -83,7 +83,9 @@ export default function Employees() {
                 <td className="py-1">{user.email}</td>
                 <td className="py-1">{user.role}</td>
                 <td className="py-1 space-x-1.5">
-                  <span>Edit</span>
+                  <NavLink to="/employees/edit" state={user}>
+                    Edit
+                  </NavLink>
                   <span>Delete</span>
                 </td>
               </tr>

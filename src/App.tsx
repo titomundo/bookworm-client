@@ -19,6 +19,7 @@ import EditLocation from "./pages/EditLocation";
 import EditBusiness from "./pages/EditBusiness";
 import Employees from "./pages/Employees.tsx";
 import CreateEmployee from "./pages/CreateEmployee.tsx";
+import EditUser from "./pages/EditUser.tsx";
 
 const App = () => {
   return (
@@ -77,6 +78,9 @@ const App = () => {
             </Route>
             <Route path="/employees/new" element={<ProtectedRoute />}>
               <Route path="" element={<CreateEmployee />}></Route>
+            </Route>
+            <Route path="/employees/edit" element={<ProtectedRoute />}>
+              <Route path="" element={<EditUser />}></Route>
             </Route>
           </Route>
         </Routes>
