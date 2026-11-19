@@ -5,6 +5,7 @@ import { useState } from "react";
 import { getFormErrors } from "../lib/getFormErrors";
 import { _Link } from "../components/_Link";
 import type { FormError } from "../lib/definitions";
+import FormErrorLi from "../components/FormError";
 
 export default function EditUser() {
   const isAuthenticated = useAuth();
@@ -58,15 +59,9 @@ export default function EditUser() {
         <div className="my-4 text-xs">
           <_Link text="Return to list" to="/businesses/" />
         </div>
-        <ul className="text-xs text-red-700">
-          {errors.map((e, index) => (
-            <li
-              key={e.name}
-              className="bg-red-500/30 px-1 rounded-sm w-fit mb-1"
-            >
-              <span>{index + 1}: </span>
-              {e.msg}
-            </li>
+        <ul>
+          {errors.map((e) => (
+            <FormErrorLi props={e} />
           ))}
         </ul>
         <div className="flex justify-center text-gray-600">
