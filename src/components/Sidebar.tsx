@@ -30,15 +30,17 @@ export function Sidebar() {
           Bookworm
         </h1>
         <ul className="flex-1 flex flex-col gap-1 my-6 text-xs w-full font-medium">
-          <li>
-            <NavLink
-              to="/businesses"
-              className={({ isActive }) => getClass(isActive)}
-            >
-              <BriefcaseIcon className="size-6 pr-2" />
-              <span>Businesses</span>
-            </NavLink>
-          </li>
+          {role !== "Employee" && (
+            <li>
+              <NavLink
+                to="/businesses"
+                className={({ isActive }) => getClass(isActive)}
+              >
+                <BriefcaseIcon className="size-6 pr-2" />
+                <span>Businesses</span>
+              </NavLink>
+            </li>
+          )}
           <li>
             <NavLink
               to="/locations"

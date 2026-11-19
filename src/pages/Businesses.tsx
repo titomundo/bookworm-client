@@ -1,16 +1,28 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { TitleBar } from "../components/TitleBar";
 import { NavLink } from "react-router-dom";
 import { _Link } from "../components/_Link";
 import type { Business } from "../lib/definitions";
+import { jwtDecode } from "jwt-decode";
 
 export default function Businesses() {
   const [businesses, setBusinesses] = useState<Array<Business>>([]);
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (token) {
+      const decoded = jwtDecode(token);
+      const role = decoded.role;
+
+      if (role === "Employee") {
+        navigate("/reservations");
+      }
+    }
+
     async function fetchData() {
       await fetch("http://127.0.0.1:5000/api/v1/businesses/", {
         method: "GET",
