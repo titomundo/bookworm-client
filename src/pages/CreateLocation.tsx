@@ -7,6 +7,8 @@ import { _Link } from "../components/_Link";
 import type { Business } from "../lib/definitions";
 import type { FormError } from "../lib/definitions";
 
+import { jwtDecode } from "jwt-decode";
+
 export default function CreateLocation() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
@@ -15,6 +17,15 @@ export default function CreateLocation() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (token) {
+      const decoded = jwtDecode(token);
+      const role = decoded.role;
+
+      if (role === "Employee") {
+        navigate("/reservations");
+      }
+    }
+
     async function fetchData() {
       await fetch("http://127.0.0.1:5000/api/v1/businesses/", {
         method: "GET",
@@ -33,7 +44,7 @@ export default function CreateLocation() {
         });
     }
     fetchData();
-  }, [token]);
+  }, [token, navigate]);
 
   async function handleSubmit(e: React.SubmitEvent) {
     e.preventDefault();
