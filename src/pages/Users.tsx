@@ -4,6 +4,7 @@ import { useAuth } from "../utils/AuthContext";
 import { TitleBar } from "../components/TitleBar";
 import type { User } from "../lib/definitions";
 import { jwtDecode } from "jwt-decode";
+import { NavLink } from "react-router-dom";
 
 export default function Users() {
   const [users, setUsers] = useState<Array<User>>([]);
@@ -18,6 +19,12 @@ export default function Users() {
     if (role !== "Admin") {
       navigate("/reservations");
     }
+  }
+
+  function getRoleBadge(role: string) {
+    if (role === "Admin") return "bg-emerald-500/30 rounded-sm py-0.5 px-1.5";
+    else if (role === "Owner") return "bg-pink-500/30 rounded-sm py-0.5 px-1.5";
+    else return "bg-yellow-500/30 rounded-sm py-0.5 px-1.5";
   }
 
   useEffect(() => {
@@ -52,28 +59,31 @@ export default function Users() {
       <div className="px-4 my-4">
         <table className="w-full text-left text-xs">
           <thead>
-            <tr className="border-b border-gray-300 text-gray-500">
+            <tr className="border-b border-gray-300 text-gray-500/60">
               <th></th>
-              <th className="w-30">First Name</th>
-              <th className="w-40">Last Name</th>
-              <th className="w-50">E-mail</th>
-              <th>Role</th>
-              <th className="">Actions</th>
+              <th className="w-30 py-2">First Name</th>
+              <th className="w-40 py-2">Last Name</th>
+              <th className="w-50 py-2">E-mail</th>
+              <th className="py-2">Role</th>
+              <th className="py-2">Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <tr key={index}>
-                <td className="py-0.5 px-1 text-center font-semibold text-gray-500">
+              <tr key={index} className="border-b border-gray-300">
+                <td className="py-1.5 px-0.5 text-center text-gray-500/60">
                   {index + 1}
                 </td>
-                <td className="py-0.5">{user.first_name}</td>
-                <td className="py-0.5">{user.last_name}</td>
-                <td className="py-0.5">{user.email}</td>
-                <td className="py-0.5">{user.role}</td>
-                <td className="py-0.5 space-x-1.5">
-                  <span>Edit</span>
-                  <span>Delete</span>
+                <td className="py-1.5">{user.first_name}</td>
+                <td className="py-1.5">{user.last_name}</td>
+                <td className="py-1.5">{user.email}</td>
+                <td className="py-1.5">
+                  <span className={getRoleBadge(user.role)}>{user.role}</span>
+                </td>
+                <td className="py-1 space-x-1.5">
+                  <NavLink to="/employees/edit" state={user} className="text-emerald-800 font-semibold underline decoration-emerald-800">
+                    Edit
+                  </NavLink>
                 </td>
               </tr>
             ))}
