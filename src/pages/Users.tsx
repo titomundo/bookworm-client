@@ -57,7 +57,7 @@ export default function Users() {
     <>
       <TitleBar title="Users" />
       <div className="px-4 my-4">
-        <table className="w-full text-left text-xs">
+        <table className="w-full text-left text-xs mt-5">
           <thead>
             <tr className="border-b border-gray-300 text-gray-500/60">
               <th></th>
@@ -81,7 +81,11 @@ export default function Users() {
                   <span className={getRoleBadge(user.role)}>{user.role}</span>
                 </td>
                 <td className="py-1 space-x-1.5">
-                  <NavLink to="/employees/edit" state={user} className="text-emerald-800 font-semibold underline decoration-emerald-800">
+                  <NavLink
+                    to="/employees/edit"
+                    state={user}
+                    className="text-emerald-800 font-semibold underline decoration-emerald-800"
+                  >
                     Edit
                   </NavLink>
                 </td>
