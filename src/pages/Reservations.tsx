@@ -14,15 +14,19 @@ export default function Reservations() {
   const [endDate, setEndDate] = useState<Date | null>(null);
 
   function filterDate(date: string) {
-    const current = new Date(date);
+    const current = new Date(date).getTime();
 
     if (!startDate || !endDate) {
       return true;
     }
 
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    return start <= current && end >= current;
+    const start = new Date(startDate).getTime();
+    const end = new Date(endDate).getTime();
+    return current >= start && current <= end;
+  }
+
+  function sortDateAscending(a: Reservation, b: Reservation) {
+    return new Date(b.date).getDate() - new Date(a.date).getDate();
   }
 
   function clearDate() {
@@ -36,13 +40,13 @@ export default function Reservations() {
     const base = " rounded-sm font-medium py-0 px-1 capitalize";
     switch (status) {
       case "pending":
-        return "bg-green-500/30 hover:bg-green-500/40 text-green-700" + base;
+        return "bg-green-500/30 text-green-700" + base;
       case "ongoing":
-        return "bg-amber-500/30 hover:bg-amber-500/40 text-amber-600" + base;
+        return "bg-amber-500/30 text-amber-600" + base;
       case "closed":
-        return "bg-stone-500/30 hover:bg-stone-500/40 text-stone-600" + base;
+        return "bg-stone-500/30 text-stone-600" + base;
       case "cancelled":
-        return "bg-red-500/30 hover:bg-red-500/40 text-red-500" + base;
+        return "bg-red-500/30 text-red-500" + base;
       default:
         return "";
     }
@@ -65,7 +69,11 @@ export default function Reservations() {
             return;
           }
 
-          setReservations(data);
+          setReservations(
+            data.sort((a: Reservation, b: Reservation) =>
+              sortDateAscending(a, b),
+            ),
+          );
         })
         .catch((error) => {
           console.log(error);
@@ -105,50 +113,51 @@ export default function Reservations() {
             Clear filter
           </button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
-          {reservations
-            .filter((e) => filterDate(e.date))
-            .map((e) => (
-              <div
-                className="text-xs bg-white shadow px-4 py-4 rounded-md text-left flex flex-col gap-2"
-                key={e.id}
-              >
-                <div className="flex-1 flex items-center text-gray-600 font-bold">
-                  <h3 className="text-base font-semibold flex-1">
-                    {format(e.date, "dd-MM-yyyy@hh:mm aaaa")}
-                  </h3>
-                  <div className="float-right">
-                    <p className={getStatus(e.status)}>{e.status}</p>
-                  </div>
-                </div>
-                <ul className="text-gray-600">
-                  <li>
-                    <span className="font-semibold">Location: </span>
-                    {e.location.name}
-                  </li>
-                  <li>
-                    <span className="font-semibold">Reason: </span>
-                    {e.reason}
-                  </li>
-                  <li>
-                    <span className="font-semibold">Slot: </span>
-                    <span>{e.slot}</span>
-                  </li>
-                  <li>
-                    <span className="font-semibold">Client: </span>
-                    <span>{e.client_name}</span>
-                  </li>
-                </ul>
-                <NavLink
-                  to="/reservations/edit"
-                  state={e}
-                  className="bg-teal-600/20 hover:bg-teal-600/30 text-teal-700 font-medium rounded-md py-1 text-center w-full block"
-                >
-                  Edit
-                </NavLink>
-              </div>
-            ))}
-        </div>
+
+        <table className="w-full text-left text-xs mt-5">
+          <thead>
+            <tr className="border-b border-gray-300 text-gray-500/60">
+              <th></th>
+              <th className="py-2">Date</th>
+              <th className="py-2">Reason</th>
+              <th className="py-2">Location</th>
+              <th className="py-2">Slot</th>
+              <th className="py-2">Client</th>
+              <th className="py-2">Status</th>
+              <th className="py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {reservations
+              .filter((e) => filterDate(e.date))
+              .map((e, index) => (
+                <tr key={index} className="border-b border-gray-300">
+                  <td className="py-1 px-2 text-center text-gray-500/60">
+                    {index + 1}
+                  </td>
+                  <td className="py-1.5">
+                    {format(e.date, "dd-MM-yyyy - hh:mm aaaa")}
+                  </td>
+                  <td className="py-1.5">{e.reason}</td>
+                  <td className="py-1.5">{e.location.name}</td>
+                  <td className="py-1.5">{e.slot}</td>
+                  <td className="py-1.5">{e.client_name}</td>
+                  <td className="py-1.5">
+                    <span className={getStatus(e.status)}>{e.status}</span>
+                  </td>
+                  <td className="py-1 space-x-1.5">
+                    <NavLink
+                      to="/reservations/edit"
+                      state={e}
+                      className="text-emerald-800 font-semibold underline decoration-emerald-800"
+                    >
+                      Edit
+                    </NavLink>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
