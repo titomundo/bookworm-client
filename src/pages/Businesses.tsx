@@ -46,7 +46,7 @@ export default function Businesses() {
         });
     }
     fetchData();
-  }, [token]);
+  }, [token, navigate]);
 
   return (
     <div>
