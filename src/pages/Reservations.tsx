@@ -12,21 +12,29 @@ export default function Reservations() {
   const [reservations, setReservations] = useState<Array<Reservation>>([]);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
+  const [statusFilter, setStatusFilter] = useState("");
 
   function filterDate(date: string) {
     const current = new Date(date).getTime();
 
-    if (!startDate || !endDate) {
-      return true;
-    }
+    if (!startDate || !endDate) return true;
 
     const start = new Date(startDate).getTime();
     const end = new Date(endDate).getTime();
     return current >= start && current <= end;
   }
 
+  function filterStatus(status: string, filter: string) {
+    if (filter === "") return true;
+    return status === filter;
+  }
+
   function sortDateAscending(a: Reservation, b: Reservation) {
     return new Date(b.date).getDate() - new Date(a.date).getDate();
+  }
+
+  function handleStatusSelect(e) {
+    setStatusFilter(e.target.value);
   }
 
   function clearDate() {
@@ -110,10 +118,22 @@ export default function Reservations() {
             className="bg-cyan-600/30 hover:bg-cyan-600/40 text-cyan-700 rounded-md py-0.5 px-2"
             onClick={clearDate}
           >
-            Clear filter
+            Clear Date filter
           </button>
+          <div>
+            <span>Status: </span>
+            <select
+              className="border border-gray-200 bg-white py-0.5 px-2 rounded-md"
+              onChange={(e) => handleStatusSelect(e)}
+            >
+              <option value="">All</option>
+              <option value="pending">Pending</option>
+              <option value="ongoing">Ongoing</option>
+              <option value="closed">Closed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
         </div>
-
         <table className="w-full text-left text-xs mt-5">
           <thead>
             <tr className="border-b border-gray-300 text-gray-500/60">
@@ -130,6 +150,7 @@ export default function Reservations() {
           <tbody>
             {reservations
               .filter((e) => filterDate(e.date))
+              .filter((e) => filterStatus(e.status, statusFilter))
               .map((e, index) => (
                 <tr key={index} className="border-b border-gray-300">
                   <td className="py-1 px-2 text-center text-gray-500/60">
