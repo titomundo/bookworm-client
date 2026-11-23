@@ -48,14 +48,19 @@ export default function Businesses() {
     fetchData();
   }, [token, navigate]);
 
+  console.log(businesses.length);
+
   return (
     <div>
       <TitleBar title="Businesses" />
       <div className="px-4">
-        <div className="text-left my-4 text-xs font-medium">
-          <_Link text="Create new business" to="/businesses/new" />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
+        {businesses.length == 0 && (
+          <div className="text-left my-4 text-xs font-medium">
+            <_Link text="Create new business" to="/businesses/new" />
+          </div>
+        )}
+
+        <div className="my-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
           {businesses.map((e) => (
             <div
               className="text-xs bg-white shadow px-4 py-4 rounded-md text-left flex flex-col gap-2"
