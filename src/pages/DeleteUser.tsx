@@ -1,9 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { TitleBar } from "../components/TitleBar";
 import { useAuth } from "../utils/AuthContext";
+import { jwtDecode } from "jwt-decode";
 
 export default function DeleteUser() {
-  const isAuthenticated = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const user = useLocation().state;
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const navigate = useNavigate();
@@ -19,6 +20,15 @@ export default function DeleteUser() {
     })
       .then((response) => response.json())
       .then(() => {
+        if (token) {
+          const decoded = jwtDecode(token);
+          const userId = decoded.sub;
+
+          if (userId === user.id) {
+            logout();
+          }
+        }
+
         navigate("/locations");
       });
   }
