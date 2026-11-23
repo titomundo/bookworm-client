@@ -1,6 +1,6 @@
 import { useAuth } from "../utils/AuthContext";
 import { TitleBar } from "../components/TitleBar";
-import { useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getFormErrors } from "../lib/getFormErrors";
 import { _Link } from "../components/_Link";
@@ -71,6 +71,13 @@ export default function EditUser() {
             onSubmit={handleSubmit}
           >
             <h3 className="text-base font-semibold">Edit User</h3>
+            <NavLink
+              to="/employees/delete"
+              state={user}
+              className="text-red-700 hover:text-red-800 underline"
+            >
+              Delete User
+            </NavLink>
             <div className="flex flex-col">
               <label className="font-medium ml-0.5" htmlFor="lastName">
                 First Name:
