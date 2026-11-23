@@ -3,7 +3,7 @@ import { TitleBar } from "../components/TitleBar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getFormErrors } from "../lib/getFormErrors";
-import type { FormError } from "../lib/definitions";
+import type { _Error } from "../lib/definitions";
 import { _Link } from "../components/_Link";
 
 export default function EditReservation() {
@@ -12,7 +12,7 @@ export default function EditReservation() {
   const reservation = useLocation().state;
   const navigate = useNavigate();
 
-  const [errors, setErrors] = useState<Array<FormError>>([]);
+  const [errors, setErrors] = useState<Array<_Error>>([]);
   const [client_name, setClientName] = useState(reservation.client_name);
   const [reason, setReason] = useState(reservation.reason);
   const [slot, setSlot] = useState(reservation.slot);
@@ -49,7 +49,7 @@ export default function EditReservation() {
           setErrors(getFormErrors(data.errors));
           return;
         } else if (data.error) {
-          setErrors(getFormErrors([data.error]));
+          setErrors(getFormErrors(data.error));
           return;
         }
 

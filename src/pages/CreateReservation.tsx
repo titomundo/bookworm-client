@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getFormErrors } from "../lib/getFormErrors";
 import type { Location } from "../lib/definitions";
-import type { FormError } from "../lib/definitions";
+import type { _Error } from "../lib/definitions";
 import { _Link } from "../components/_Link";
 
 export default function CreateReservation() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const [locations, setLocations] = useState<Array<Location>>([]);
-  const [errors, setErrors] = useState<Array<FormError>>([]);
+  const [errors, setErrors] = useState<Array<_Error>>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,6 +50,7 @@ export default function CreateReservation() {
     const data = {
       client_name: formData.get("client_name"),
       reason: formData.get("reason"),
+      // @ts-expect-error: will always have value 
       slot: parseInt(formData.get("slot"), 10),
       date: formData.get("date"),
       status: formData.get("status"),
@@ -73,7 +74,7 @@ export default function CreateReservation() {
           setErrors(getFormErrors(data.errors));
           return;
         } else if (data.error) {
-          setErrors(getFormErrors([data.error]));
+          setErrors(getFormErrors(data.error));
           return;
         }
 

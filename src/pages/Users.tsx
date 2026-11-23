@@ -15,6 +15,7 @@ export default function Users() {
 
   if (token) {
     const decoded = jwtDecode(token);
+    // @ts-expect-error: will always have role
     const role = decoded.role;
 
     if (role !== "Admin") {
@@ -27,7 +28,7 @@ export default function Users() {
     return role === filter;
   }
 
-  function handleRoleSelect(e) {
+  function handleRoleSelect(e: React.ChangeEvent<HTMLSelectElement>) {
     setRoleFilter(e.target.value);
   }
 

@@ -16,6 +16,7 @@ export default function Employees() {
 
   if (token) {
     const decoded = jwtDecode(token);
+    // @ts-expect-error: will always have role
     const role = decoded.role;
 
     if (role === "Employee") {

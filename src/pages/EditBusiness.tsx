@@ -4,14 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getFormErrors } from "../lib/getFormErrors";
 import { _Link } from "../components/_Link";
-import type { FormError } from "../lib/definitions";
+import type { _Error } from "../lib/definitions";
 
 export default function EditBusiness() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const business = useLocation().state;
   const navigate = useNavigate();
-  const [errors, setErrors] = useState<Array<FormError>>([]);
+  const [errors, setErrors] = useState<Array<_Error>>([]);
 
   const [name, setName] = useState(business.name);
   const [description, setDescription] = useState(business.description);
@@ -42,7 +42,7 @@ export default function EditBusiness() {
           setErrors(getFormErrors(data.errors));
           return;
         } else if (data.error) {
-          setErrors(getFormErrors([data.error]));
+          setErrors(getFormErrors(data.error));
           return;
         }
         navigate("/businesses");

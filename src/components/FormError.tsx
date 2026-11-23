@@ -1,4 +1,6 @@
-export default function FormErrorLi({ props }) {
+import type { _Error } from "../lib/definitions";
+
+export default function FormErrorLi(props: _Error) {
   return (
     <li
       key={props.name}

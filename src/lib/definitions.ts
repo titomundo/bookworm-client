@@ -33,7 +33,7 @@ export interface User {
   email: string;
 }
 
-export interface FormError {
+export interface _Error{
   name?: string;
   msg?: string;
 }

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getFormErrors } from "../lib/getFormErrors";
 import { _Link } from "../components/_Link";
 import type { Business } from "../lib/definitions";
-import type { FormError } from "../lib/definitions";
+import type { _Error } from "../lib/definitions";
 
 import { jwtDecode } from "jwt-decode";
 
@@ -13,12 +13,13 @@ export default function CreateLocation() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const [businesses, setBusinesses] = useState<Array<Business>>([]);
-  const [errors, setErrors] = useState<Array<FormError>>([]);
+  const [errors, setErrors] = useState<Array<_Error>>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
       const decoded = jwtDecode(token);
+      // @ts-expect-error: will always have role
       const role = decoded.role;
 
       if (role === "Employee") {
@@ -51,8 +52,10 @@ export default function CreateLocation() {
     setErrors([]);
 
     const formData = new FormData(e.target);
+
     const data = {
       name: formData.get("name"),
+      // @ts-expect-error: will always have value
       capacity: parseInt(formData.get("capacity")),
       description: formData.get("description"),
       business_id: formData.get("business_id"),

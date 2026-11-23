@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import { getFormErrors } from "../lib/getFormErrors";
 import { _Link } from "../components/_Link";
 import type { Location } from "../lib/definitions";
-import type { FormError } from "../lib/definitions";
+import type { _Error } from "../lib/definitions";
 
 export default function CreateEmployee() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const [locations, setLocations] = useState<Array<Location>>([]);
-  const [errors, setErrors] = useState<Array<FormError>>([]);
+  const [errors, setErrors] = useState<Array<_Error>>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export default function CreateEmployee() {
           setErrors(getFormErrors(data.errors));
           return;
         } else if (data.error) {
-          setErrors(getFormErrors([data.error]));
+          setErrors(getFormErrors(data.error));
           return;
         }
 

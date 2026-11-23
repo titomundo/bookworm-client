@@ -4,8 +4,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getFormErrors } from "../lib/getFormErrors";
 import { _Link } from "../components/_Link";
-import type { FormError } from "../lib/definitions";
-import FormErrorLi from "../components/FormError";
+import type { _Error } from "../lib/definitions";
 
 export default function EditUser() {
   const isAuthenticated = useAuth();
@@ -13,7 +12,7 @@ export default function EditUser() {
   const user = useLocation().state;
   const [firstName, setFirstName] = useState(user.first_name);
   const [lastName, setLastName] = useState(user.last_name);
-  const [errors, setErrors] = useState<Array<FormError>>([]);
+  const [errors, setErrors] = useState<Array<_Error>>([]);
   const navigate = useNavigate();
 
   async function handleSubmit(e: React.SubmitEvent) {
@@ -25,15 +24,18 @@ export default function EditUser() {
       last_name: lastName,
     };
 
-    await fetch(`https://bookworm-api-p9rh.onrender.com/api/v1/users/${user.id}`, {
-      method: "PUT",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+    await fetch(
+      `https://bookworm-api-p9rh.onrender.com/api/v1/users/${user.id}`,
+      {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
       },
-      body: JSON.stringify(data),
-    })
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.msg) {
@@ -42,7 +44,7 @@ export default function EditUser() {
           setErrors(getFormErrors(data.errors));
           return;
         } else if (data.error) {
-          setErrors(getFormErrors([data.error]));
+          setErrors(getFormErrors(data.error));
           return;
         }
 
@@ -62,7 +64,13 @@ export default function EditUser() {
         </div>
         <ul>
           {errors.map((e) => (
-            <FormErrorLi props={e} />
+            <li
+              key={e.name}
+              className="bg-red-500/30 px-1 rounded-sm w-fit mb-1"
+            >
+              <span>{e.name}: </span>
+              {e.msg}
+            </li>
           ))}
         </ul>
         <div className="flex justify-center text-gray-600">

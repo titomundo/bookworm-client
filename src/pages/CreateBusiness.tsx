@@ -4,14 +4,15 @@ import { TitleBar } from "../components/TitleBar";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { _Link } from "../components/_Link";
+import type { _Error } from "../lib/definitions";
 
 export default function CreateBusinesses() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
-  const [errors, setErrors] = useState<Array<FormError>>([]);
+  const [errors, setErrors] = useState<Array<_Error>>([]);
   const navigate = useNavigate();
 
-  async function createBusiness(e) {
+  async function createBusiness(e: React.SubmitEvent) {
     e.preventDefault();
     setErrors([]);
     const formData = new FormData(e.target);

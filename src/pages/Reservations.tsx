@@ -33,13 +33,13 @@ export default function Reservations() {
     return new Date(b.date).getDate() - new Date(a.date).getDate();
   }
 
-  function handleStatusSelect(e) {
+  function handleStatusSelect(e: React.ChangeEvent<HTMLSelectElement>) {
     setStatusFilter(e.target.value);
   }
 
   function clearDate() {
-    document.getElementById("startDate").value = "";
-    document.getElementById("endDate").value = "";
+    (document.getElementById("startDate") as HTMLInputElement).value = "";
+    (document.getElementById("endDate") as HTMLInputElement).value = "";
     setStartDate(null);
     setEndDate(null);
   }

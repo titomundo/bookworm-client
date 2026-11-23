@@ -4,14 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getFormErrors } from "../lib/getFormErrors";
 import { _Link } from "../components/_Link";
-import type { FormError } from "../lib/definitions";
+import type { _Error } from "../lib/definitions";
 
 export default function EditLocation() {
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
   const location = useLocation().state;
   const navigate = useNavigate();
-  const [errors, setErrors] = useState<Array<FormError>>([]);
+  const [errors, setErrors] = useState<Array<_Error>>([]);
 
   const [name, setName] = useState(location.name);
   const [description, setDescription] = useState(location.description);
@@ -45,7 +45,7 @@ export default function EditLocation() {
           setErrors(getFormErrors(data.errors));
           return;
         } else if (data.error) {
-          setErrors(getFormErrors([data.error]));
+          setErrors(getFormErrors(data.error));
           return;
         }
         navigate("/locations");

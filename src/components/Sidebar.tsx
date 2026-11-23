@@ -17,6 +17,7 @@ export function Sidebar() {
   const base = " py-0.5 px-1.5 flex items-center rounded-sm";
   const { isAuthenticated } = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
+  // @ts-expect-error: will always have role
   const role = token ? jwtDecode(token).role : null;
 
   function getClass(isActive: boolean) {

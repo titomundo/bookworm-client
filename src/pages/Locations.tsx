@@ -10,7 +10,9 @@ export default function Locations() {
   const [locations, setLocations] = useState<Array<Location>>([]);
   const isAuthenticated = useAuth();
   const token = isAuthenticated ? localStorage.getItem("token") : null;
-  const role = jwtDecode(token).role;
+
+  // @ts-expect-error: will always have role
+  const role = token ? jwtDecode(token).role : null;
 
   useEffect(() => {
     async function fetchData() {
