@@ -16,7 +16,7 @@ export default function CreateBusinesses() {
     setErrors([]);
     const formData = new FormData(e.target);
 
-    await fetch("http://127.0.0.1:5000/api/v1/businesses/", {
+    await fetch("https://bookworm-api-p9rh.onrender.com/api/v1/businesses/", {
       method: "POST",
       credentials: "include",
       headers: {

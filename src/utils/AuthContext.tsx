@@ -22,7 +22,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 
   const login = async (email: string, password: string) => {
-    await fetch("http://127.0.0.1:5000/api/v1/auth/login", {
+    await fetch("https://bookworm-api-p9rh.onrender.com/api/v1/auth/login", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -53,7 +53,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     email: string,
     password: string,
   ) => {
-    await fetch("http://127.0.0.1:5000/api/v1/auth/register", {
+    await fetch("https://bookworm-api-p9rh.onrender.com/api/v1/auth/register", {
       method: "POST",
       credentials: "include",
       headers: {

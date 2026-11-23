@@ -16,7 +16,7 @@ export default function CreateEmployee() {
 
   useEffect(() => {
     async function fetchData() {
-      await fetch("http://127.0.0.1:5000/api/v1/locations/", {
+      await fetch("https://bookworm-api-p9rh.onrender.com/api/v1/locations/", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -48,7 +48,7 @@ export default function CreateEmployee() {
       location_id: formData.get("location_id"),
     };
 
-    await fetch("http://127.0.0.1:5000/api/v1/users/", {
+    await fetch("https://bookworm-api-p9rh.onrender.com/api/v1/users/", {
       method: "POST",
       credentials: "include",
       headers: {

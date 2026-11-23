@@ -32,7 +32,7 @@ export default function EditReservation() {
       location_id: reservation.location.id,
     };
 
-    await fetch(`http://127.0.0.1:5000/api/v1/reservations/${reservation.id}`, {
+    await fetch(`https://bookworm-api-p9rh.onrender.com/api/v1/reservations/${reservation.id}`, {
       method: "PUT",
       credentials: "include",
       headers: {

@@ -24,7 +24,7 @@ export default function Businesses() {
     }
 
     async function fetchData() {
-      await fetch("http://127.0.0.1:5000/api/v1/businesses/", {
+      await fetch("https://bookworm-api-p9rh.onrender.com/api/v1/businesses/", {
         method: "GET",
         credentials: "include",
         headers: {

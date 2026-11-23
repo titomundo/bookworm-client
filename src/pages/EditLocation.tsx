@@ -28,7 +28,7 @@ export default function EditLocation() {
       business_id: location.business_id,
     };
 
-    await fetch(`http://127.0.0.1:5000/api/v1/locations/${location.id}`, {
+    await fetch(`https://bookworm-api-p9rh.onrender.com/api/v1/locations/${location.id}`, {
       method: "PUT",
       credentials: "include",
       headers: {

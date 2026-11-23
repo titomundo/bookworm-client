@@ -10,14 +10,17 @@ export default function DeleteUser() {
   const navigate = useNavigate();
 
   async function handleDelete() {
-    await fetch(`http://127.0.0.1:5000/api/v1/users/${user.id}`, {
-      method: "DELETE",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+    await fetch(
+      `https://bookworm-api-p9rh.onrender.com/api/v1/users/${user.id}`,
+      {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       },
-    })
+    )
       .then((response) => response.json())
       .then(() => {
         if (token) {

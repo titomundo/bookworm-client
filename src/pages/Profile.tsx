@@ -13,14 +13,17 @@ export default function Profile() {
 
   useEffect(() => {
     async function fetchData() {
-      await fetch("http://127.0.0.1:5000/api/v1/users/profile", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      await fetch(
+        "https://bookworm-api-p9rh.onrender.com/api/v1/users/profile",
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         },
-      })
+      )
         .then((response) => response.json())
         .then((data) => {
           if (data.msg) {

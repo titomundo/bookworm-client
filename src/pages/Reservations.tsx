@@ -62,7 +62,7 @@ export default function Reservations() {
 
   useEffect(() => {
     async function fetchData() {
-      await fetch("http://127.0.0.1:5000/api/v1/reservations/", {
+      await fetch("https://bookworm-api-p9rh.onrender.com/api/v1/reservations/", {
         method: "GET",
         credentials: "include",
         headers: {

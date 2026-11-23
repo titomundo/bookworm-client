@@ -27,7 +27,7 @@ export default function CreateLocation() {
     }
 
     async function fetchData() {
-      await fetch("http://127.0.0.1:5000/api/v1/businesses/", {
+      await fetch("https://bookworm-api-p9rh.onrender.com/api/v1/businesses/", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -58,7 +58,7 @@ export default function CreateLocation() {
       business_id: formData.get("business_id"),
     };
 
-    await fetch("http://127.0.0.1:5000/api/v1/locations/", {
+    await fetch("https://bookworm-api-p9rh.onrender.com/api/v1/locations/", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -76,7 +76,7 @@ export default function CreateLocation() {
           return;
         }
 
-        navigate("/reservations");
+        navigate("/locations");
       })
       .catch((error) => {
         console.log(error);

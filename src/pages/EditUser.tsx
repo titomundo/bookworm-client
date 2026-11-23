@@ -25,7 +25,7 @@ export default function EditUser() {
       last_name: lastName,
     };
 
-    await fetch(`http://127.0.0.1:5000/api/v1/users/${user.id}`, {
+    await fetch(`https://bookworm-api-p9rh.onrender.com/api/v1/users/${user.id}`, {
       method: "PUT",
       credentials: "include",
       headers: {

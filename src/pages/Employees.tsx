@@ -32,7 +32,7 @@ export default function Employees() {
   useEffect(() => {
     async function fetchData() {
       await fetch(
-        `http://127.0.0.1:5000/api/v1/locations/${location.id}/employees`,
+        `https://bookworm-api-p9rh.onrender.com/api/v1/locations/${location.id}/employees`,
         {
           method: "GET",
           credentials: "include",
