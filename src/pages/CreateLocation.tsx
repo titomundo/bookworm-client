@@ -22,7 +22,7 @@ export default function CreateLocation() {
       const role = decoded.role;
 
       if (role === "Employee") {
-        navigate("/reservations");
+        navigate("/");
       }
     }
 
