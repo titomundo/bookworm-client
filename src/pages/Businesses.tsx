@@ -48,8 +48,6 @@ export default function Businesses() {
     fetchData();
   }, [token, navigate]);
 
-  console.log(businesses.length);
-
   return (
     <div>
       <TitleBar title="Businesses" />
