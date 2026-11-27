@@ -28,12 +28,12 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div id="features" className="py-32 px-12">
-        <div className="pb-6 underline">
+      <div id="features" className="py-12 px-12">
+        <div className="pb-8">
           <h1 className="text-4xl font-bold">Features</h1>
         </div>
 
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-3 gap-10 pb-8">
           <div className="bg-white shadow rounded-md">
             <div className="font-medium text-left px-6 py-5">
               <h3 className="font-semibold underline">Reservations</h3>
@@ -104,25 +104,77 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div id="contact" className="py-32 px-12 w-full">
-        <div className="pb-6 underline">
-          <h1 className="text-4xl font-bold">Contact</h1>
+      <div id="about" className="pt-12 w-full">
+        <div className="pb-12">
+          <h1 className="text-4xl font-bold">About</h1>
         </div>
 
         <div className="flex justify-center">
-          <div className="bg-white shadow rounded-md w-2xl py-6 px-2">
-            <div className="font-medium text-left px-6 py-5">
-              <h3 className="font-semibold">
-                Got Questions? Send us an E-mail
-              </h3>
-              <div className="text-sm">
-                <a
-                  href="mailto:tito.alberto.mundo@gmail.com"
-                  className="text-white bg-teal-800 hover:bg-teal-700 font-semibold w-full block text-center py-3 rounded-md mt-4"
-                >
-                  Send E-mail
-                </a>
+          <div className="grid grid-cols-3 shadow">
+            <div className="bg-mist-100 rounded-md">
+              <div className="font-medium text-left px-6 py-5">
+                <h3 className="font-semibold underline">Why?</h3>
+                <div className="text-sm">
+                  <p className="text-olive-600">
+                    We created Bookworm to help restaurant owners to help them
+                    make and manage reservations.
+                  </p>
+                </div>
               </div>
+            </div>
+
+            <div className="bg-mist-200">
+              <div className="font-medium text-left px-6 py-5">
+                <h3 className="font-semibold underline">How?</h3>
+                <div className="text-sm">
+                  <p className="text-olive-600">
+                    Bookworm's was coded using the following tech stacks:
+                  </p>
+                  <ul className="list-disc list-inside pt-2 text-olive-500">
+                    <li>Backend: Python and Flask</li>
+                    <li>Frontend: Typescript and React</li>
+                    <li>Styles: TailwindCSS</li>
+                    <li>Hosting: Render</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-mist-300">
+              <div className="font-medium text-left px-6 py-5">
+                <h3 className="font-semibold underline">Who?</h3>
+                <div className="text-sm">
+                  <p className="text-olive-600">The team behind Bookworm:</p>
+                  <ul className="list-disc list-inside pt-2 text-olive-500">
+                    <li>
+                      <a
+                        href="https://github.com/titomundo"
+                        className="hover:underline"
+                      >
+                        Tito Alberto Mundo
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full border border-olive-300"></div>
+
+      <div id="contact" className="py-12 w-full">
+        <div className="flex justify-center">
+          <div className="text-left px-6 py-5">
+            <h3 className="font-semibold">Got Questions? Send us an E-mail</h3>
+            <div className="text-sm">
+              <a
+                href="mailto:tito.alberto.mundo@gmail.com"
+                className="text-white bg-teal-800 hover:bg-teal-700 font-semibold w-full block text-center py-3 rounded-md mt-4"
+              >
+                Send E-mail
+              </a>
             </div>
           </div>
         </div>
@@ -137,10 +189,12 @@ export default function LandingPage() {
             Bookworm &trade; {new Date().getFullYear()}
           </span>
           <div className="text-sm flex gap-4">
-            <span className="hover:underline hover:text-olive-600">About</span>
-            <span className="hover:underline hover:text-olive-600">
+            <a href="#about" className="hover:underline hover:text-olive-600">
+              About
+            </a>
+            <a href="#contact" className="hover:underline hover:text-olive-600">
               Contact
-            </span>
+            </a>
             <span className="hover:underline hover:text-olive-600">
               <a href="https://github.com/titomundo/bookworm-client">Source</a>
             </span>
