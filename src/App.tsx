@@ -21,6 +21,7 @@ import Employees from "./pages/Employees.tsx";
 import CreateEmployee from "./pages/CreateEmployee.tsx";
 import EditUser from "./pages/EditUser.tsx";
 import DeleteUser from "./pages/DeleteUser.tsx";
+import LandingPage from "./components/Landing.tsx";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="" element={<Layout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/" element={<LandingPage />} />
 
             <Route path="/" element={<ProtectedRoute />}>
               <Route path="" element={<Dashboard />}></Route>
@@ -84,9 +86,8 @@ const App = () => {
               <Route path="" element={<EditUser />}></Route>
             </Route>
             <Route path="/employees/delete" element={<ProtectedRoute />}>
-              <Route path="" element={<DeleteUser/>}></Route>
+              <Route path="" element={<DeleteUser />}></Route>
             </Route>
-
           </Route>
         </Routes>
       </Router>
