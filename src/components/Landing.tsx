@@ -4,8 +4,8 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col">
       <div className="w-full h-full flex justify-center items-center">
-        <div className="grid grid-cols-7 w-full h-120 overflow-hidden shadow">
-          <div className="flex col-span-2 bg-lime-900/70 px-10 items-center h-full">
+        <div className="grid grid-cols-7 w-full max-h-180 overflow-hidden shadow">
+          <div className="flex col-span-2 bg-lime-900/70 px-10 items-center">
             <div className="text-left text-white">
               <p className="py-2 font-bold text-4xl">Bookworm</p>
               <p className="font-medium py-4 text-olive-200">
@@ -22,7 +22,7 @@ export default function LandingPage() {
           <div className="col-span-5">
             <img
               className=""
-              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2015%2F09%2F14%2F11%2F43%2Frestaurant-939435_1280.jpg&f=1&nofb=1&ipt=ed9faf9fa1434630fbd843ee6eeff30444c3143a9a803510d58d1b84ef3afcbc&ipo=images"
+              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapers.com%2Fimages%2Fhd%2Fc-restaurant-in-the-sky-australia-xu5fj281rrqqfsda.jpg&f=1&nofb=1&ipt=61c9836ea60169c2d532c31336918bfa1669d1828beee72c9cd2bf66658623f7&ipo=images"
             />
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function LandingPage() {
       </div>
 
       <div className="w-full h-full flex justify-center items-center">
-        <div className="grid grid-cols-7 w-full h-120 overflow-hidden shadow">
+        <div className="grid grid-cols-7 w-full max-h-150 overflow-hidden shadow">
           <div className="col-span-4">
             <img
               className=""
