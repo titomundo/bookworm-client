@@ -3,6 +3,19 @@ import { NavLink } from "react-router-dom";
 export default function LandingPage() {
   return (
     <div className="flex flex-col">
+      <div className="text-sm font-medium bg-olive-200 py-0.5 px-4 text-olive-700 space-x-4">
+        <a href="#features" className="hover:underline hover:text-olive-600">
+          Features
+        </a>
+        <span>-</span>
+        <a href="#about" className="hover:underline hover:text-olive-600">
+          About
+        </a>
+        <span>-</span>
+        <a href="#contact" className="hover:underline hover:text-olive-600">
+          Contact
+        </a>
+      </div>
       <div className="w-full h-full flex justify-center items-center">
         <div className="grid grid-cols-7 w-full max-h-180 overflow-hidden shadow">
           <div className="flex col-span-2 bg-lime-900/70 px-10 items-center">
